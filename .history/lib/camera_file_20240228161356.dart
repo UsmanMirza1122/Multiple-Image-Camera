@@ -30,7 +30,8 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
   addImages(XFile image) {
     setState(() {
       imageFiles.add(image);
-      _animationController.reset();
+      _animationController = AnimationController(
+          vsync: this, duration: const Duration(milliseconds: 1500));
       animation = Tween<double>(begin: 400, end: 1).animate(scaleAnimation =
           CurvedAnimation(
               parent: _animationController, curve: Curves.elasticOut))
@@ -85,9 +86,9 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
   @override
   void initState() {
     _animationController = AnimationController(
-      vsync: this, // Pass the TickerProvider
-      duration: const Duration(milliseconds: 1500),
-    );
+    vsync: this, // Pass the TickerProvider
+    duration: const Duration(milliseconds: 1500),
+  );
     _initCamera();
     _currIndex = 0;
 
@@ -372,7 +373,6 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
   void dispose() {
     if (_controller != null) {
       _controller!.dispose();
-      _animationController.dispose();
     } else {
       _animationController.dispose();
     }

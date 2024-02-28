@@ -85,9 +85,9 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
   @override
   void initState() {
     _animationController = AnimationController(
-      vsync: this, // Pass the TickerProvider
-      duration: const Duration(milliseconds: 1500),
-    );
+    vsync: this, // Pass the TickerProvider
+    duration: const Duration(milliseconds: 1500),
+  );
     _initCamera();
     _currIndex = 0;
 
